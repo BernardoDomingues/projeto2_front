@@ -1,7 +1,8 @@
 import React from "react";
+import BasePage from '../../Components/BasePage';
 
 const Home = () => {
-  return <div>Página Inicial</div>;
+  return <><BasePage /></>;
 };
 
 export default Home;

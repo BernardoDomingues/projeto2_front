@@ -1,19 +1,25 @@
 import React from "react";
 import Home from "./containers/Home";
 import About from "./containers/About";
+import Singin from './containers/Singin';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-export default function App() {
+const App = () => {
   return (
     <Router>
       <Switch>
+        <Route path="/">
+          <Home />
+        </Route>
         <Route path="/sobre">
           <About />
         </Route>
-        <Route path="/">
-          <Home />
+        <Route path="/entrar">
+          <Singin />
         </Route>
       </Switch>
     </Router>
   );
-}
+};
+
+export default App;
