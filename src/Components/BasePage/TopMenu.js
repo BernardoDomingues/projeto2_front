@@ -80,6 +80,10 @@ const NavButtonLink = styled(Link)`
 
 const Image = styled.img`
   cursor: pointer;
+
+  @media screen and (max-width: 1035px) {
+    margin-left: 10px;
+  }
 `;
 
 export default TopMenu;

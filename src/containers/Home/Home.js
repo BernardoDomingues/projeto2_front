@@ -2,7 +2,7 @@ import React from "react";
 import BasePage from '../../Components/BasePage';
 
 const Home = () => {
-  return <><BasePage /></>;
+  return <><BasePage />Teste</>;
 };
 
 export default Home;
