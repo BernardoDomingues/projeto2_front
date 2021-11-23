@@ -1,3 +1,13 @@
-import TopMenu from './TopMenu';
+import React from "react";
+import TopMenu from "./TopMenu";
+import { Footer } from "./Footer";
 
-export default TopMenu;
+const BasePage = ({ children }) => (
+  <>
+    <TopMenu />
+    {children}
+    <Footer />
+  </>
+);
+
+export default BasePage;

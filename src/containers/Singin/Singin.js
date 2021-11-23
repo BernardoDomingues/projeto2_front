@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
-export default function Singin() {
-  return (
-    <div>
-      Teste
-    </div>
-  )
-}
+const Singin = () => {
+  return <div>Página Entrar</div>;
+};
+
+export default Singin;

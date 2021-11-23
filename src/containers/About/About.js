@@ -1,8 +1,12 @@
 import React from "react";
-import BasePage from '../../Components/BasePage';
+import BasePage from "../../Components/BasePage";
 
 const About = () => {
-  return <><BasePage /></>;
+  return (
+    <>
+      <BasePage>Sobre o Projeto</BasePage>
+    </>
+  );
 };
 
 export default About;
