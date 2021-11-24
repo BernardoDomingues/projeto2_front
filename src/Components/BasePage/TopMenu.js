@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import colors from "./../../helpers/colors";
+import colors from "helpers/colors";
 import { MdToc } from "react-icons/md";
 
 import Logo from "../Logo";

@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import colors from "../../helpers/colors";
+import colors from "helpers/colors";
 
-import Logo from "../../Components/Logo";
+import Logo from "Components/Logo";
+
+import LoginForm from './LoginForm';
 
 const Singin = () => {
+  const [formState, setFormState] = useState('login')
   return (
     <Container>
       <Card>
@@ -14,6 +17,8 @@ const Singin = () => {
           width: 250px;
         "
         />
+        {formState === 'login' && <LoginForm />}
+        {formState === 'singIn' && <span>Cadastro</span>}
       </Card>
     </Container>
   );

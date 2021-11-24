@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 import Home from './containers/Home';
 import About from './containers/About';
-import Singin from './containers/Singin';
+import Singin from './containers/Login';
 
 const App = () => {
   return (

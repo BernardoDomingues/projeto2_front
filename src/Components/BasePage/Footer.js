@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import colors from "../../helpers/colors";
+import colors from "helpers/colors";
 
 export const Footer = styled.div`
   position: fixed;

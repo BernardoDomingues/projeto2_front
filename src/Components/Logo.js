@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import LogoImage from "../assets/CineDataLogo.png";
+import LogoImage from "assets/CineDataLogo.png";
 
 const Logo = ({ extraStyle }) => {
   const history = useHistory();

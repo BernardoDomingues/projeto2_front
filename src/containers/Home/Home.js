@@ -1,5 +1,5 @@
 import React from "react";
-import BasePage from "../../Components/BasePage";
+import BasePage from "Components/BasePage";
 
 const Home = () => {
   return (

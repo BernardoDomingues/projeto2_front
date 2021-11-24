@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import colors from "./../../helpers/colors";
+import colors from "helpers/colors";
 
 export const NavLink = ({ label, route }) => {
   const [style, setStyle] = useState('');
