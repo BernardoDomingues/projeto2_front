@@ -49,14 +49,12 @@ const Card = styled.div`
     grid-template-columns: none;
     height: auto;
     box-shadow: none;
-    background-color: ${colors.backgroundColor};
   }
 
   @media (max-width: 1150px) {
     grid-template-columns: none;
     height: auto;
     box-shadow: none;
-    background-color: ${colors.backgroundColor};
   }
 `;
 

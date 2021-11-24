@@ -12,13 +12,14 @@ const loginSchema = Yup.object().shape({
   password: Yup.string()
     .min(8, "Muito Pequena!")
     .max(50, "Muito Longa!")
-    .required("Obrigatório"),
-  email: Yup.string().email("Email Inválido").required("Obrigatório")
+    .required("Campo Obrigatório!"),
+  email: Yup.string().email("Email Inválido!").required("Campo Obrigatório!")
 });
 
-const handleSubmit = (values, { setSubmitting }) => {
+const handleSubmit = (values, { setSubmitting, resetForm }) => {
     alert(JSON.stringify(values, null, 2));
     setSubmitting(false);
+    resetForm();
 };
     return (
       <>
@@ -34,12 +35,12 @@ const handleSubmit = (values, { setSubmitting }) => {
                 <label>
                   <div>Email:</div>
                   <FormField type="email" name="email" />
-                  <ErrorMessage name="email" component="div" />
+                  <ErrorMessage name="email" component="div" style={{ color: 'red' }} />
                 </label>
                 <label>
                   <div>Senha:</div>
                   <FormField type="password" name="password" />
-                  <ErrorMessage name="password" component="div" />
+                  <ErrorMessage name="password" component="div" style={{ color: 'red' }} />
                 </label>
                 </div>
                 <SubmmitButton type="submit" disabled={isSubmitting}>
@@ -54,7 +55,6 @@ const handleSubmit = (values, { setSubmitting }) => {
 };
 
 const FormData = styled(Form)`
-  // background-color: red;
   display: grid;
   gap: 50px;
 `;
@@ -91,6 +91,10 @@ const SubmmitButton = styled.button`
   :hover{
     opacity: 0.8;
   };
+
+  @media (max-width: 1150px) {
+    margin-bottom: 10px;
+  }
 `;
 
 export default LoginForm;
