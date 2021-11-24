@@ -6,6 +6,7 @@ import { useLogin } from 'providers/login';
 
 import Logo from "Components/Logo";
 import LoginForm from './LoginForm';
+import RegisterForm from "./RegisterForm";
 
 const Singin = () => {
   const { formState } = useLogin();
@@ -19,7 +20,7 @@ const Singin = () => {
         "
         />
         {formState === 'login' && <LoginForm />}
-        {formState === 'singIn' && <span>Cadastro</span>}
+        {formState === 'register' && <RegisterForm />}
       </Card>
     </Container>
   );
