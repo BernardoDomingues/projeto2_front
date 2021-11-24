@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import colors from "helpers/colors";
 
-import Logo from "Components/Logo";
+import { useLogin } from 'providers/login';
 
+import Logo from "Components/Logo";
 import LoginForm from './LoginForm';
 
 const Singin = () => {
-  const [formState, setFormState] = useState('login')
+  const { formState } = useLogin();
   return (
     <Container>
       <Card>
