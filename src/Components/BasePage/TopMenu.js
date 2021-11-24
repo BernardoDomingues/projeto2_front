@@ -1,17 +1,16 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import colors from "./../../helpers/colors";
 import { MdToc } from "react-icons/md";
 
-import LogoImage from '../../assets/CineDataLogo.png'
+import Logo from "../Logo";
 import { NavLink } from "./NavLink";
 
 const TopMenu = () => {
-  const history = useHistory();
   return (
     <Nav>
-      <Image src={LogoImage} alt="project logo" onClick={() => history.push('./')} />
+      <Logo />
       <Bars />
       <NavMenu>
         <NavLink route="/" label="Catálogo" />
@@ -76,14 +75,6 @@ const NavButtonLink = styled(Link)`
   transition: all 0.2s ease-in-out;
   text-decoration: none;
   margin-left: 24px;
-`;
-
-const Image = styled.img`
-  cursor: pointer;
-
-  @media screen and (max-width: 1035px) {
-    margin-left: 10px;
-  }
 `;
 
 export default TopMenu;
