@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
+import { postRegister } from "services/register";
 
 import { useLogin } from "providers/login";
 
@@ -32,8 +33,8 @@ const RegisterForm = () => {
     ),
   });
 
-  const handleSubmit = (values, { setSubmitting, resetForm }) => {
-    alert(JSON.stringify(values, null, 2));
+  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+    await postRegister(values);
     setSubmitting(false);
     resetForm();
   };
@@ -48,16 +49,26 @@ const RegisterForm = () => {
           return (
             <FormData>
               <div style={{ display: "grid" }}>
-                <InputField name="userName" type="text" label="Nome de Usuário:" />
+                <InputField
+                  name="userName"
+                  type="text"
+                  label="Nome de Usuário:"
+                />
                 <InputField name="email" type="email" label="Email:" />
                 <InputField name="password" type="password" label="Senha:" />
-                <InputField name="passwordConfirmation" type="password" label="Confirme sua Senha:" />
+                <InputField
+                  name="passwordConfirmation"
+                  type="password"
+                  label="Confirme sua Senha:"
+                />
               </div>
               <ButtonGrid>
                 <BigButton type="submit" disabled={isSubmitting}>
                   Cadastrar
                 </BigButton>
-                <BackButton onClick={() => setFormState('login')}>Voltar</BackButton>
+                <BackButton onClick={() => setFormState("login")}>
+                  Voltar
+                </BackButton>
               </ButtonGrid>
             </FormData>
           );
