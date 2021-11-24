@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
 import colors from 'helpers/colors';
+import InputField from "Components/InputField";
 
 const LoginForm = () => {
 const values = { email: "", password: "" }
@@ -32,16 +33,16 @@ const handleSubmit = (values, { setSubmitting, resetForm }) => {
             return (
               <FormData>
                 <div style={{ display: 'grid' }}>
-                <label>
-                  <div>Email:</div>
-                  <FormField type="email" name="email" />
-                  <ErrorMessage name="email" component="div" style={{ color: 'red' }} />
-                </label>
-                <label>
-                  <div>Senha:</div>
-                  <FormField type="password" name="password" />
-                  <ErrorMessage name="password" component="div" style={{ color: 'red' }} />
-                </label>
+                  <InputField
+                    name="email"
+                    type="email"
+                    label="Email:"
+                  />
+                  <InputField
+                    name="password"
+                    type="password"
+                    label="Senha:"
+                  />
                 </div>
                 <SubmmitButton type="submit" disabled={isSubmitting}>
                   Entrar
@@ -57,22 +58,6 @@ const handleSubmit = (values, { setSubmitting, resetForm }) => {
 const FormData = styled(Form)`
   display: grid;
   gap: 50px;
-`;
-
-const FormField = styled(Field)`
-  height: 25px;
-  border-radius: 5px;
-  margin-top: 5px;
-  border: 0;
-  padding-left: 5px;
-  border: solid 1px ${colors.black};
-  background: ${colors.backgroundColor};
-  transition: 0.4s;
-  
-  :focus{
-    border: solid 1px ${colors.primaryGreen};
-    background: #fff;
-  }
 `;
 
 const SubmmitButton = styled.button`
