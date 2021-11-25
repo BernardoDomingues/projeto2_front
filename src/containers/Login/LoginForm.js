@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 
+import { postLogin } from "services/login";
+
 import { useLogin } from 'providers/login';
 
 import colors from 'helpers/colors';
@@ -22,8 +24,8 @@ const loginSchema = Yup.object().shape({
   email: Yup.string().email("Email Inválido!").required("Campo Obrigatório!")
 });
 
-const handleSubmit = (values, { setSubmitting, resetForm }) => {
-    alert(JSON.stringify(values, null, 2));
+const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+    await postLogin(values);
     setSubmitting(false);
     resetForm();
 };
