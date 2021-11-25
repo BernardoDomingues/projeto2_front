@@ -1,8 +1,9 @@
 import axios from "axios";
+import { URL_BACK } from "helpers/constant";
 
 const postRegister = async (data) =>
   axios
-    .post("http://localhost:5000/register", data)
+    .post(`${URL_BACK}/register`, data)
     .then((res) => res)
     .catch((error) => {
       if (!error.response) {
