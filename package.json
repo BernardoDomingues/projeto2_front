@@ -10,6 +10,7 @@
     "dotenv": "^10.0.0",
     "formik": "^2.2.9",
     "harmony-reflect": "^1.6.2",
+    "js-cookie": "^3.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",

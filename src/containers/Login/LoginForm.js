@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
+import Cookies from "js-cookie";
 
 import { postLogin } from "services/login";
 
@@ -12,7 +13,7 @@ import InputField from "Components/InputField";
 import BigButton from "Components/BigButton";
 
 const LoginForm = () => {
-  const { setFormState } = useLogin();
+  const { setFormState, setLoginAuth, setUserData } = useLogin();
   
 const values = { email: "", password: "" }
 
@@ -25,7 +26,13 @@ const loginSchema = Yup.object().shape({
 });
 
 const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-    await postLogin(values);
+    const userData = await postLogin(values);
+    if (userData.data.status) {
+      Cookies.set("user", "loginTrue");
+      setUserData(userData.data.userData.userName);
+      setLoginAuth(true)
+      Cookies.set("userName", userData.data.userData.userName);
+    }
     setSubmitting(false);
     resetForm();
 };
