@@ -3,21 +3,27 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import colors from "helpers/colors";
 import { MdToc } from "react-icons/md";
+import { FaRegUser } from "react-icons/fa";
+
+import { useLogin } from 'providers/login';
 
 import Logo from "../Logo";
 import { NavLink } from "./NavLink";
 
 const TopMenu = () => {
+  const { loginAuth, userData } = useLogin();
   return (
     <Nav>
       <Logo />
       <Bars />
       <NavMenu>
+        {loginAuth && (<NavLink route="/perfil" label="Feed" />)}
         <NavLink route="/" label="Catálogo" />
         <NavLink route="/sobre" label="Sobre" />
       </NavMenu>
       <NavBtn>
-        <NavButtonLink to="/entrar">Entrar</NavButtonLink>
+        {!loginAuth && (<NavButtonLink to="/entrar">Entrar</NavButtonLink>)}
+        {loginAuth && (<UserOptions><UserIcon />{userData}</UserOptions>)}
       </NavBtn>
     </Nav>
   );
@@ -75,6 +81,18 @@ const NavButtonLink = styled(Link)`
   transition: all 0.2s ease-in-out;
   text-decoration: none;
   margin-left: 24px;
+`;
+
+const UserOptions = styled.span`
+  cursor: pointer;
+  color: ${colors.primaryGreen};
+  :hover {
+    opacity: 0.8;
+  }
+`;
+
+const UserIcon = styled(FaRegUser)`
+  margin-right: 6px;
 `;
 
 export default TopMenu;
