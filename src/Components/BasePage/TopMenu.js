@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
 import styled from "styled-components";
 import colors from "helpers/colors";
 import { MdToc } from "react-icons/md";
@@ -12,6 +14,21 @@ import { NavLink } from "./NavLink";
 
 const TopMenu = () => {
   const { loginAuth, userData } = useLogin();
+  const [userMenuState, setUserMenuState] = useState(false);
+  const history = useHistory();
+
+  const openMenu = (state) => {
+    if (state) {
+      return '';
+    } return 'none';
+  };
+
+  const handleLogout = () => {
+    Cookies.remove("user");
+    Cookies.remove("userName");
+    history.go(0);
+  }
+
   return (
     <Nav>
       <Logo />
@@ -22,8 +39,12 @@ const TopMenu = () => {
         <NavLink route="/sobre" label="Sobre" />
       </NavMenu>
       <NavBtn>
-        {!loginAuth && (<NavButtonLink to="/entrar">Entrar</NavButtonLink>)}
-        {loginAuth && (<UserOptions><UserIcon />{userData}</UserOptions>)}
+        {!loginAuth && (<NavButtonLink to="/login">Entrar</NavButtonLink>)}
+        {loginAuth && (<UserOptions onClick={() => setUserMenuState(!userMenuState)}><UserIcon />{userData}</UserOptions>)}
+        <Menu display={openMenu(userMenuState)}>
+          <Item onClick={() => handleLogout()}>Logout</Item>
+          <Item onClick={() => history.push("/perfil")}>Perfil</Item>
+        </Menu>
       </NavBtn>
     </Nav>
   );
@@ -93,6 +114,29 @@ const UserOptions = styled.span`
 
 const UserIcon = styled(FaRegUser)`
   margin-right: 6px;
+`;
+
+const Menu = styled.div`
+  position: absolute;
+  display: ${(props) => props.display};
+  box-shadow: 5px 3px 30px rgba(50, 50, 50, 0.2);
+  top: 43px;
+  right: 291px;
+
+  @media(max-width: 800px) {
+    top: 65px;
+    right: 20px;
+  }
+`;
+
+const Item = styled.li`
+  list-style: none;
+  padding: 10px;
+  cursor: pointer;
+  :hover{
+    background-color: ${colors.secondaryGreen};
+    color: ${colors.white};
+  }
 `;
 
 export default TopMenu;
