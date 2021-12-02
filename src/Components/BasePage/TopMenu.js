@@ -11,6 +11,8 @@ import { useLogin } from 'providers/login';
 
 import Logo from "../Logo";
 import { NavLink } from "./NavLink";
+import DropDownMenu from "Components/DropDownMenu";
+import { ItemMenu } from 'Components/DropDownMenu/ItemMenu';
 
 const TopMenu = () => {
   const { loginAuth, userData } = useLogin();
@@ -42,8 +44,8 @@ const TopMenu = () => {
         {!loginAuth && (<NavButtonLink to="/login">Entrar</NavButtonLink>)}
         {loginAuth && (<UserOptions onClick={() => setUserMenuState(!userMenuState)}><UserIcon />{userData}</UserOptions>)}
         <Menu display={openMenu(userMenuState)}>
-          <Item onClick={() => handleLogout()}>Logout</Item>
-          <Item onClick={() => history.push("/perfil")}>Perfil</Item>
+          <ItemMenu onClick={() => handleLogout()}>Logout</ItemMenu>
+          <ItemMenu onClick={() => history.push("/perfil")}>Perfil</ItemMenu>
         </Menu>
       </NavBtn>
     </Nav>
@@ -116,26 +118,16 @@ const UserIcon = styled(FaRegUser)`
   margin-right: 6px;
 `;
 
-const Menu = styled.div`
-  position: absolute;
-  display: ${(props) => props.display};
-  box-shadow: 5px 3px 30px rgba(50, 50, 50, 0.2);
+const Menu = styled(DropDownMenu)`
   top: 43px;
   right: 291px;
 
-  @media(max-width: 800px) {
-    top: 65px;
-    right: 20px;
+  @media(max-width: 1300px) {
+    right: 80px;
   }
-`;
 
-const Item = styled.li`
-  list-style: none;
-  padding: 10px;
-  cursor: pointer;
-  :hover{
-    background-color: ${colors.secondaryGreen};
-    color: ${colors.white};
+  @media(max-width: 1100px) {
+    right: 30px;
   }
 `;
 
