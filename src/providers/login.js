@@ -9,8 +9,6 @@ export const LoginProvider = ({ children }) => {
   const [loginAuth, setLoginAuth] = useState(false);
   const [userData, setUserData] = useState([]);
 
-  console.log(loginAuth, userData);
-
   const readCookie = () => {
     const user = Cookies.get("user");
     const cookiesUserData = Cookies.get("userName");

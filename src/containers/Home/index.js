@@ -1,3 +1,6 @@
 import Home from './Home'
+import { MoviesProvider } from "providers/movies";
 
-export default Home;
+const index = () => <MoviesProvider><Home /></MoviesProvider>
+
+export default index;
