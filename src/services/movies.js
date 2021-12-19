@@ -22,4 +22,15 @@ const searchMovies = async (data) =>
       }
       return error.response.data;
     });
-export { getHomePageMovies, searchMovies };
+
+const getMovie = async (data) =>
+  axios
+    .post(`${URL_BACK}/movies`, data)
+    .then((res) => res.data)
+    .catch((error) => {
+      if (!error.response) {
+        return false;
+      }
+      return error.response.data;
+    });
+export { getHomePageMovies, searchMovies, getMovie };

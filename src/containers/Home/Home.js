@@ -7,7 +7,7 @@ import SearchMovie from './SearchMovie';
 import { useMovies } from 'providers/movies';
 
 const Home = () => {
-  const { movies, isError } = useMovies();
+  const { movies, isError, addMovieFavorite } = useMovies();
 
   return (
     <>
@@ -16,7 +16,7 @@ const Home = () => {
         <ResultsDiv>
           {!isError &&
             movies.map((movie) => (
-              <IndividualCardMovie>
+              <IndividualCardMovie onClick={() => addMovieFavorite(movie.id)}>
                 <Banner alt="Banner do Filme" src={movie.image} />
                 <div>{movie.title}</div>
               </IndividualCardMovie>

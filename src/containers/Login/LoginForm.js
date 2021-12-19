@@ -29,9 +29,9 @@ const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     const userData = await postLogin(values);
     if (userData.data.status) {
       Cookies.set("user", "loginTrue");
-      setUserData(userData.data.userData.userName);
+      setUserData(userData.data.userData);
       setLoginAuth(true)
-      Cookies.set("userName", userData.data.userData.userName);
+      Cookies.set("userData", JSON.stringify(userData.data.userData));
     }
     setSubmitting(false);
     resetForm();

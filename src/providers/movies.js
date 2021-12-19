@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import Cookies from "js-cookie";
 
 import { getHomePageMovies, searchMovies } from "services/movies";
+import { updateUser } from "services/users";
+
+import { useLogin } from 'providers/login';
 
 export const MoviesContext = React.createContext({});
 
 export const MoviesProvider = ({ children }) => {
+  const { userData, setUserData } = useLogin();
   const [movies, setMovies] = useState([]);
   const [isError, setIsError] = useState(false);
   const [searcher, setSearcher] = useState("");
 
-  // const addMovieFavorite = (movieId) => {
-
-  // };
+  const addMovieFavorite = async (movieId) => {
+    const update = await updateUser(userData.id, { favMovieId: movieId });
+    Cookies.set("userData", JSON.stringify(update.data));
+    setUserData(update.data);
+  };
 
   const searchMovie = async () => {
     const data = await searchMovies({ reqType: "search", options: searcher });
@@ -37,7 +44,8 @@ export const MoviesProvider = ({ children }) => {
         movies,
         isError,
         setSearcher,
-        searchMovie
+        searchMovie,
+        addMovieFavorite
       }}
     >
       {children}

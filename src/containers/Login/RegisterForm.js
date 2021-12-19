@@ -37,6 +37,7 @@ const RegisterForm = () => {
     await postRegister(values);
     setSubmitting(false);
     resetForm();
+    setFormState("login");
   };
   return (
     <>
