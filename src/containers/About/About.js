@@ -20,9 +20,14 @@ const About = () => {
             Utilizamos como base de dados do sistema a versão free da API de
             filmes da IMDb(Internet Movie Database), para tal, foi necessário
             criar uma conta no site oficial(
-            <a href="https://imdb-api.com/film-rating-system" target="_blank">
+            <span
+              onClick={() =>
+                window.open("https://imdb-api.com/film-rating-system", "_blank")
+              }
+              style={{ cursor: 'pointer' }}
+            >
               https://imdb-api.com/film-rating-system
-            </a>
+            </span>
             ) onde obtivemos uma Key necessária na requisição dos dados.
           </p>
         </Container>
@@ -37,16 +42,29 @@ const About = () => {
               há 1 ano na Rede Melhor Compra.
             </p>
             <CardFooter>
-              <a
-                href="https://linkedin.com/in/bernardo-domingues14"
-                target="_blank"
+              <span
+                onClick={() =>
+                  window.open(
+                    "https://linkedin.com/in/bernardo-domingues14",
+                    "_blank"
+                  )
+                }
+                style={{ cursor: 'pointer' }}
               >
                 LinkedIn
-              </a>
+              </span>
               <br />
-              <a href="https://github.com/BernardoDomingues" target="_blank">
+              <span
+                onClick={() =>
+                  window.open(
+                    "https://github.com/BernardoDomingues",
+                    "_blank"
+                  )
+                }
+                style={{ cursor: 'pointer' }}
+              >
                 GitHub
-              </a>
+              </span>
             </CardFooter>
           </Card>
           <Card>
@@ -59,16 +77,29 @@ const About = () => {
               ensino.
             </p>
             <CardFooter>
-              <a href="https://unifei.edu.br/" target="_blank">
-                Site
-              </a>
+              <span
+                onClick={() =>
+                  window.open(
+                    "https://unifei.edu.br/",
+                    "_blank"
+                  )
+                }
+                style={{ cursor: 'pointer' }}
+              >
+                WebSite
+              </span>
               <br />
-              <a
-                href="https://pt.wikipedia.org/wiki/Universidade_Federal_de_Itajub%C3%A1"
-                target="_blank"
+              <span
+                onClick={() =>
+                  window.open(
+                    "https://pt.wikipedia.org/wiki/Universidade_Federal_de_Itajub%C3%A1",
+                    "_blank"
+                  )
+                }
+                style={{ cursor: 'pointer' }}
               >
                 Wikipedia
-              </a>
+              </span>
             </CardFooter>
           </Card>
           <Card>
@@ -81,16 +112,29 @@ const About = () => {
               Engenharia de Computação na UNIFEI
             </p>
             <CardFooter>
-              <a
-                href="https://www.linkedin.com/in/vinicius-santos11"
-                target="_blank"
+              <span
+                onClick={() =>
+                  window.open(
+                    "https://www.linkedin.com/in/vinicius-santos11",
+                    "_blank"
+                  )
+                }
+                style={{ cursor: 'pointer' }}
               >
                 LinkedIn
-              </a>
+              </span>
               <br />
-              <a href="https://github.com/ViniciusP-Sants" target="_blank">
+              <span
+                onClick={() =>
+                  window.open(
+                    "https://github.com/ViniciusP-Sants",
+                    "_blank"
+                  )
+                }
+                style={{ cursor: 'pointer' }}
+              >
                 GitHub
-              </a>
+              </span>
             </CardFooter>
           </Card>
         </ProfileGrid>
