@@ -36,7 +36,7 @@ const TopMenu = () => {
       <Logo />
       <Bars />
       <NavMenu>
-        {loginAuth && (<NavLink route="/perfil" label="Feed" />)}
+        {loginAuth && (<NavLink route="/perfil" label="Perfil" />)}
         <NavLink route="/" label="Catálogo" />
         <NavLink route="/sobre" label="Sobre" />
       </NavMenu>

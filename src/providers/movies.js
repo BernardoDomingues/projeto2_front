@@ -10,6 +10,10 @@ export const MoviesProvider = ({ children }) => {
   const [isError, setIsError] = useState(false);
   const [searcher, setSearcher] = useState("");
 
+  // const addMovieFavorite = (movieId) => {
+
+  // };
+
   const searchMovie = async () => {
     const data = await searchMovies({ reqType: "search", options: searcher });
     setMovies(data);
