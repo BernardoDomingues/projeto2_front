@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 import { getHomePageMovies, searchMovies } from "services/movies";
 import { updateUser } from "services/users";
 
-import { useLogin } from 'providers/login';
+import { useLogin } from "providers/login";
 
 export const MoviesContext = React.createContext({});
 
@@ -16,9 +16,11 @@ export const MoviesProvider = ({ children }) => {
   const [searcher, setSearcher] = useState("");
 
   const addMovieFavorite = async (movieId) => {
-    const update = await updateUser(userData.id, { favMovieId: movieId });
-    Cookies.set("userData", JSON.stringify(update.data));
-    setUserData(update.data);
+    if (userData.id) {
+      const update = await updateUser(userData.id, { favMovieId: movieId });
+      Cookies.set("userData", JSON.stringify(update.data));
+      setUserData(update.data);
+    }
   };
 
   const searchMovie = async () => {
@@ -28,7 +30,10 @@ export const MoviesProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getHomePageMovies({ reqType: "homePage", options: "" });
+      const data = await getHomePageMovies({
+        reqType: "homePage",
+        options: "",
+      });
       if (data.personalError) {
         setIsError(data.personalError);
       } else {
@@ -45,7 +50,7 @@ export const MoviesProvider = ({ children }) => {
         isError,
         setSearcher,
         searchMovie,
-        addMovieFavorite
+        addMovieFavorite,
       }}
     >
       {children}
